@@ -8,7 +8,7 @@ fn config_defaults() {
         Limits {
             max_depth: 128,
             max_document_bytes: 16_777_216,
-            max_token_bytes: 1_048_576,
+            max_token_bytes: usize::try_from(1_048_576_u32).unwrap_or(usize::MAX),
             max_expansion: 33_554_432,
         }
     );

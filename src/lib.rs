@@ -74,7 +74,7 @@ impl Default for Limits {
         Self {
             max_depth: 128,
             max_document_bytes: 16 * 1024 * 1024,
-            max_token_bytes: 1024 * 1024,
+            max_token_bytes: 1024_usize.saturating_mul(1024),
             max_expansion: 32 * 1024 * 1024,
         }
     }

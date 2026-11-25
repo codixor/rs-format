@@ -38,7 +38,7 @@ assert_eq!(diagnostic.position().unwrap().offset, Some(0));
 | --- | ---: | --- |
 | `max_depth` | 128 | Open containers. A scalar has depth zero and a root container has depth one. |
 | `max_document_bytes` | 16 MiB | Input bytes in one document. |
-| `max_token_bytes` | 1 MiB | Encoded bytes in one token body, before decoding or expansion. |
+| `max_token_bytes` | 1 MiB, capped at `usize::MAX` | Encoded bytes in one token body, before decoding or expansion. |
 | `max_expansion` | 32 Mi units | Cumulative format-specific expansion work in one document. |
 
 Each bound is inclusive. Set `max_expansion` to zero to disable constructs that incur expansion cost. A parser defines its expansion units, applies the limits, and reports `Category::Limit` when a bound is exceeded. Using the shared types alone does not change a parser's behavior.
