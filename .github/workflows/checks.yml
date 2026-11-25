@@ -29,3 +29,7 @@ jobs:
           assert len(metadata["packages"]) == 1 and not metadata["packages"][0]["dependencies"]
           PY
           cargo package --locked
+      - name: Check the library on 16-bit MSP430
+        run: |
+          rustup toolchain install nightly-2026-10-31 --profile minimal --component rust-src
+          cargo +nightly-2026-10-31 check --locked -Z build-std=core --target msp430-none-elf --lib
