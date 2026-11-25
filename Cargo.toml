@@ -1,0 +1,22 @@
+[package]
+name = "rs-format"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.100"
+description = "Shared error categories, source positions, and resource limits for format parsers"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/codixor/rs-format"
+readme = "README.md"
+categories = ["no-std", "no-std::no-alloc", "parsing"]
+keywords = ["parser", "no-std", "diagnostics", "limits"]
+include = ["src/**", "tests/**", "Cargo.toml", "Cargo.lock", "README.md", "LICENSE-*"]
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+debug = false
+strip = "symbols"
+panic = "unwind"
+incremental = false
+overflow-checks = false
